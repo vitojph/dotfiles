@@ -1,0 +1,5 @@
+" .gvimrc
+
+" GUI Option to remove the Toolbar (T)
+set guioptions-=T
+

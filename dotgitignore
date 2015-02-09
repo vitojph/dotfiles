@@ -1,0 +1,13 @@
+*~
+*.pyc
+*.swp
+*.aux
+*.toc
+*.blg
+*.log
+*.bbl
+*.zip
+*.gz
+venv/
+.Rhistory
+
