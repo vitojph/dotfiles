@@ -1,20 +1,33 @@
 " .vimrc
 " Ideas picked from Steve Losh <steve@stevelosh.com>
 " Source: http://bitbucket.org/sjl/dotfiles/src/tip/vim/
-" 3/03/2012
 
 " Preamble ---------------------------------------------------------------- {{{
 
 filetype off
-call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
 " support 256 colors in terminal mode
 set t_Co=256
 
-set nocompatible
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
 set modelines=0
+
+" ------------- vim-plug options --------------
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'davidhalter/jedi-vim'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'junegunn/goyo.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
 
 " tabs, spacing, etc
 set tabstop=4
@@ -27,6 +40,14 @@ set formatoptions=qrn1
 set colorcolumn=85
 set list
 set listchars=tab:▸\ ,eol:¬
+
+
+" back-ups
+set backup
+set backupdir=~/.vim/vim-backups
+set directory=~/.vim/vim-swaps
+set undodir=~/.vim/vim-undos
+set writebackup
 
 
 " encoding
@@ -44,9 +65,9 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
+set number
 set relativenumber
 set undofile
-
 
 " autoclose parentheses, brackets, and braces.
 imap { {}<left>
@@ -56,21 +77,20 @@ imap [ []<left>
 noremap! "" ""<left>
 noremap! '' ''<left>
 
-
 " Color scheme {{{
 syntax on
 set background=dark
-colorscheme molokai
+colorscheme dracula 
 
-" leader
-let mapleader = ","
+" set space as leader key
+nnoremap <SPACE> <Nop>
+let mapleader = " "
 
 " fold tag fuction for HTML
 nnoremap <leader>ft Vatzf
 
 " sort properties in CSS
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
-
 
 " searching & moving
 nnoremap / /\v
@@ -108,12 +128,14 @@ au FocusLost * :wa
 au FocusLost * :silent! wall                 " Save on FocusLost
 au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLost
 
-
 " quick escaping
 inoremap jj <ESC>
 
 " new vertical split and move
 nnoremap <leader>w <C-w>v<C-w>l
+
+" save the current buffer
+noremap <leader>s :update<CR>
 
 " move around splits
 nnoremap <C-h> <C-w>h
@@ -121,12 +143,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-
 " set usedful status line
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set statusline=%F%m%r%h%w\ [type=%Y]\ [len=%L]\ [%p%%]\ [pos=%04l,%03v]
 set laststatus=2 " Always show the statusline on the 2nd last row
-
 
 "When opening a file, always jump to the last cursor position
 autocmd BufReadPost *                                                           
@@ -134,14 +154,18 @@ autocmd BufReadPost *
 \   exe "normal g'\"" |                                                         
 \ endif
 
-
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc
 
 " open .vimrc in a vertical split to edit on the fly
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
-
 " md is Markdown, not Modula2
 au BufRead,BufNewFile *.md set filetype=markdown
+
+" NERDTree CTRL+n
+map <C-n> :NERDTreeToggle<CR>
+
+" Goyo: distraction free mode
+map <C-g> :Goyo<CR>
 

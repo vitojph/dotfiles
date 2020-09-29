@@ -1,23 +1,15 @@
 [user]
-    email = vitojph@gmail.com
-    name = Victor Peinado
-[push]
-    default = matching
-[core]
-	editor = atom --wait
-[merge]
-    tool = vimdiff
+	name = Víctor Peinado
+	email = vitojph@gmail.com
 [color]
-    ui = true
+	ui = auto
+[merge]
+	conflictstyle = diff3
 [core]
-    excludesfile = "/home/victor/.gitignore"
-[alias]
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate --numstat --graph
-    ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate --date=short --graph
-    lasttag = describe --tags --abbrev=0
-    st = status -sb
-    cl = clone
-    ci = commit
-    co = checkout
-    br = branch
-
+	editor = vim
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[submodule]
+	recurse = true
