@@ -1,0 +1,17 @@
+onboarding = false
+# Mirror the tmux prefix-oriented pane controls in ~/.config/tmux/tmux.conf.
+[keys]
+prefix = "ctrl+a"
+reload_config = "prefix+r"
+split_vertical = "prefix+shift+backslash" # Ctrl-a |
+split_horizontal = "prefix+minus"         # Ctrl-a -
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+zoom = "prefix+m"
+rename_pane = "prefix+comma"  # tmux-style; was prefix+shift+p
+resize_mode = ""
+
+[ui]
+agent_panel_sort = "spaces"
