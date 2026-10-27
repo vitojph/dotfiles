@@ -45,7 +45,7 @@ Read `README.md` first. It lists every file and what it does.
 ### 1. Install the tools
 
 Required: `git`, `neovim` (0.11 or newer), `tmux`, a C compiler, `curl`,
-`ripgrep`, `fd`, `node`/`npm` (Mason uses it for pyright and markdownlint).
+`ripgrep`, `fd`, `node`/`npm` (Mason uses it for markdownlint).
 Optional: `lazygit`, `herdr`, a Nerd Font in the terminal.
 
 - macOS: `brew install git neovim tmux ripgrep fd node lazygit`.
@@ -104,7 +104,7 @@ Never run `tmux kill-server` without `-L`. It ends all of the user's tmux sessio
 `Lazy! restore` installs the exact versions in `lazy-lock.json`.
 Use `Lazy! sync` only if the user wants to update plugins.
 
-On first start, Mason also installs pyright, ruff and markdownlint-cli2.
+On first start, Mason also installs ty, ruff and markdownlint-cli2.
 That needs network and `npm`.
 
 ## Platform notes

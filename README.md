@@ -34,7 +34,9 @@ Move the old folder away first.
 - Uses LazyVim. On first start, lazy.nvim installs itself and all plugins.
 - `lazy-lock.json` pins the plugin versions.
 - Extras: Python, Markdown and neo-tree.
-- Python: pyright and ruff. Pyright uses `.venv/bin/python` when the project has one.
+- Python: ty and ruff (`lua/plugins/ty.lua`). ty finds the project `.venv` on its own.
+  To go back to pyright, set `vim.g.lazyvim_python_lsp = "pyright"` in
+  `lua/config/options.lua` and delete `lua/plugins/ty.lua`.
 - `lua/plugins/theme.lua`: On Omarchy, it loads the current Omarchy theme.
   On other systems, it uses tokyonight.
 - `lua/config/remote_clipboard.lua`: Over SSH or inside tmux or herdr, copies go to
